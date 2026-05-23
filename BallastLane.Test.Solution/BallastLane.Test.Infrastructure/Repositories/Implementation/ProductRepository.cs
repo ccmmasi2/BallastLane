@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BallastLane.Test.Infrastructure.ObjectRepository.Implementation
+namespace BallastLane.Test.Infrastructure.Repositories.Implementation
 {
-    internal class CustomerRepository
+    internal class ProductRepository
     {
     }
 }
