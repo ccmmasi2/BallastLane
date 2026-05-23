@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Application", "BallastLane.Test.Core\BallastLane.Test.Application.csproj", "{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.API", "BallastLane.Test.API\BallastLane.Test.API.csproj", "{C47C3E99-D772-DC09-A119-F7FA290B4B51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Infrastructure", "BallastLane.Test.Infrastructure\BallastLane.Test.Infrastructure.csproj", "{9363A1B8-4AE3-3970-0C6E-82E7E149AE06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Domain", "BallastLane.Test.Domain\BallastLane.Test.Domain.csproj", "{ECC3966A-B106-666A-407C-CA19A5C15C20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Application", "BallastLane.Test.Application\BallastLane.Test.Application.csproj", "{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C47C3E99-D772-DC09-A119-F7FA290B4B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C47C3E99-D772-DC09-A119-F7FA290B4B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C47C3E99-D772-DC09-A119-F7FA290B4B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{ECC3966A-B106-666A-407C-CA19A5C15C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC3966A-B106-666A-407C-CA19A5C15C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC3966A-B106-666A-407C-CA19A5C15C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
