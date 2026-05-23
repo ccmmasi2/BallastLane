@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Application", "BallastLane.Test.Core\BallastLane.Test.Application.csproj", "{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.AccessData", "BallastLane.Test.AccessData\BallastLane.Test.AccessData.csproj", "{0B76FEEB-30F8-4126-B5C6-308A114469FA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.API", "BallastLane.Test.API\BallastLane.Test.API.csproj", "{C47C3E99-D772-DC09-A119-F7FA290B4B51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Infrastructure", "BallastLane.Test.Infrastructure\BallastLane.Test.Infrastructure.csproj", "{9363A1B8-4AE3-3970-0C6E-82E7E149AE06}"
@@ -21,10 +19,6 @@ Global
 		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFA355D1-FCAA-439D-BAC2-FFA3B54933F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B76FEEB-30F8-4126-B5C6-308A114469FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B76FEEB-30F8-4126-B5C6-308A114469FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B76FEEB-30F8-4126-B5C6-308A114469FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B76FEEB-30F8-4126-B5C6-308A114469FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C47C3E99-D772-DC09-A119-F7FA290B4B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C47C3E99-D772-DC09-A119-F7FA290B4B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C47C3E99-D772-DC09-A119-F7FA290B4B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
