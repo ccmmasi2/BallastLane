@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BallastLane.Test.Core.Domain.Implementation
+namespace BallastLane.Test.Application.Domain.Implementation
 {
     internal class CategoryService
     {

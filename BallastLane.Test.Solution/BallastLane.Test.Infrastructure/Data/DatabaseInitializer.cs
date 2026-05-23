@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
-namespace BallasLane.Test.Infrastructure.Data
+namespace BallastLane.Test.Infrastructure.Data
 {
     public class DatabaseInitializer
     {

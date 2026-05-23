@@ -1,0 +1,13 @@
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\bin\Debug\net9.0\BallastLane.Test.Infrastructure.deps.json
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\bin\Debug\net9.0\BallastLane.Test.Infrastructure.dll
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\bin\Debug\net9.0\BallastLane.Test.Infrastructure.pdb
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.csproj.AssemblyReference.cache
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.AssemblyInfoInputs.cache
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.AssemblyInfo.cs
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.sourcelink.json
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.dll
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\refint\BallastLane.Test.Infrastructure.dll
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\BallastLane.Test.Infrastructure.pdb
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\obj\Debug\net9.0\ref\BallastLane.Test.Infrastructure.dll
