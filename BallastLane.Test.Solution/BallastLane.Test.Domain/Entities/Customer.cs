@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BallastLine.Test.Domain.Entities
+namespace BallastLane.Test.Domain.Entities
 {
     internal class Customer
     {

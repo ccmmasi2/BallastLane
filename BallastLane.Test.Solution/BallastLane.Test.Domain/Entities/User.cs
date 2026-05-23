@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace BallastLine.Test.Domain.Entities
+namespace BallastLane.Test.Domain.Entities
 {
-    internal class Product
+    internal class User
     {
     }
 }
