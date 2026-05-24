@@ -75,9 +75,7 @@ namespace BallastLane.Test.Application.Services.Implementations
 
             await _invoiceRepository.DeleteAsync(id);
         }
-
-        // ── Mapping ──────────────────────────────────────────────────────────
-
+         
         private static InvoiceDTO MapToDto(Invoice i) => new()
         {
             Id                     = i.Id,

@@ -1,7 +1,8 @@
-﻿using BallastLane.Test.Application.DTOs;
+using BallastLane.Test.Application.DTOs;
 using BallastLane.Test.Application.Services.Implementations;
 using BallastLane.Test.Application.Validators;
 using BallastLane.Test.Domain.Entities;
+using BallastLane.Test.Domain.Exceptions;
 using BallastLane.Test.Infrastructure.Repositories.Interfaces;
 using Moq;
 
@@ -10,15 +11,13 @@ namespace BallastLane.Test.Tests.Services
     public class ProductServiceTest
     {
         private readonly Mock<IProductRepository> _repositoryMock;
-        private readonly ProductService _sut;
+        private readonly ProductService           _sut;
 
         public ProductServiceTest()
         {
             _repositoryMock = new Mock<IProductRepository>();
             _sut = new ProductService(_repositoryMock.Object, new ProductValidator());
         }
-
-        // ── helpers ──────────────────────────────────────────────────────────
 
         private static Product MakeProduct(
             int id = 1, string name = "Laptop",
@@ -28,8 +27,7 @@ namespace BallastLane.Test.Tests.Services
             CategoryId  = categoryId,
             Name        = name,
             Description = "Sample description",
-            Price       = price,
-            //Category    = new Category { Id = categoryId, Name = "Electronics" }
+            Price       = price
         };
 
         private static ProductDTO MakeDto(
@@ -79,7 +77,7 @@ namespace BallastLane.Test.Tests.Services
         }
 
         [Fact]
-        public async Task GetAllAsync_MapsAllFieldsCorrectly()
+        public async Task GetAllAsync_MapsAllScalarFieldsCorrectly()
         {
             // Arrange
             _repositoryMock
@@ -90,11 +88,10 @@ namespace BallastLane.Test.Tests.Services
             var result = (await _sut.GetAllAsync()).Single();
 
             // Assert
-            Assert.Equal(7, result.Id);
+            Assert.Equal(7,        result.Id);
             Assert.Equal("Keyboard", result.Name);
-            Assert.Equal(149.99m, result.Price);
-            Assert.Equal(3, result.CategoryId);
-            Assert.Equal("Electronics", result.CategoryName);
+            Assert.Equal(149.99m,  result.Price);
+            Assert.Equal(3,        result.CategoryId);
         }
 
         // ── GetByIdAsync ─────────────────────────────────────────────────────
@@ -112,10 +109,10 @@ namespace BallastLane.Test.Tests.Services
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(1, result.Id);
+            Assert.Equal(1,        result.Id);
             Assert.Equal("Laptop", result.Name);
-            Assert.Equal(999.99m, result.Price);
-            Assert.Equal(2, result.CategoryId);
+            Assert.Equal(999.99m,  result.Price);
+            Assert.Equal(2,        result.CategoryId);
         }
 
         [Fact]
@@ -221,22 +218,22 @@ namespace BallastLane.Test.Tests.Services
             // Assert
             Assert.NotNull(captured);
             Assert.Equal("Gaming Chair", captured.Name);
-            Assert.Equal(3, captured.CategoryId);
-            Assert.Equal(399.99m, captured.Price);
-            Assert.Equal("Ergonomic", captured.Description);
+            Assert.Equal(3,             captured.CategoryId);
+            Assert.Equal(399.99m,       captured.Price);
+            Assert.Equal("Ergonomic",   captured.Description);
         }
 
         [Theory]
         [InlineData("")]
         [InlineData("   ")]
         [InlineData(null)]
-        public async Task CreateAsync_WhenNameIsNullOrWhiteSpace_ThrowsArgumentException(string? name)
+        public async Task CreateAsync_WhenNameIsNullOrWhiteSpace_ThrowsValidationException(string? name)
         {
             // Arrange
             var dto = MakeDto(name: name!);
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => _sut.CreateAsync(dto));
+            await Assert.ThrowsAsync<ValidationException>(() => _sut.CreateAsync(dto));
             _repositoryMock.Verify(r => r.CreateAsync(It.IsAny<Product>()), Times.Never);
         }
 
@@ -244,26 +241,26 @@ namespace BallastLane.Test.Tests.Services
         [InlineData(0)]
         [InlineData(-1)]
         [InlineData(-500)]
-        public async Task CreateAsync_WhenPriceIsNotPositive_ThrowsArgumentException(decimal price)
+        public async Task CreateAsync_WhenPriceIsNotPositive_ThrowsValidationException(decimal price)
         {
             // Arrange
             var dto = MakeDto(price: price);
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => _sut.CreateAsync(dto));
+            await Assert.ThrowsAsync<ValidationException>(() => _sut.CreateAsync(dto));
             _repositoryMock.Verify(r => r.CreateAsync(It.IsAny<Product>()), Times.Never);
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public async Task CreateAsync_WhenCategoryIdIsNotPositive_ThrowsArgumentException(int categoryId)
+        public async Task CreateAsync_WhenCategoryIdIsNotPositive_ThrowsValidationException(int categoryId)
         {
             // Arrange
             var dto = MakeDto(categoryId: categoryId);
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => _sut.CreateAsync(dto));
+            await Assert.ThrowsAsync<ValidationException>(() => _sut.CreateAsync(dto));
             _repositoryMock.Verify(r => r.CreateAsync(It.IsAny<Product>()), Times.Never);
         }
 
@@ -273,9 +270,7 @@ namespace BallastLane.Test.Tests.Services
         public async Task UpdateAsync_WhenProductExistsAndDtoIsValid_CallsRepositoryUpdateOnce()
         {
             // Arrange
-            _repositoryMock
-                .Setup(r => r.GetByIdAsync(1))
-                .ReturnsAsync(MakeProduct(1));
+            _repositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(MakeProduct(1));
 
             // Act
             await _sut.UpdateAsync(MakeDto(id: 1, name: "Updated Laptop", price: 1099m));
@@ -288,9 +283,7 @@ namespace BallastLane.Test.Tests.Services
         public async Task UpdateAsync_WhenProductExistsAndDtoIsValid_MapsAllFieldsToEntity()
         {
             // Arrange
-            _repositoryMock
-                .Setup(r => r.GetByIdAsync(1))
-                .ReturnsAsync(MakeProduct(1));
+            _repositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(MakeProduct(1));
 
             Product? captured = null;
             _repositoryMock
@@ -311,36 +304,34 @@ namespace BallastLane.Test.Tests.Services
 
             // Assert
             Assert.NotNull(captured);
-            Assert.Equal(1, captured.Id);
-            Assert.Equal("Updated Laptop", captured.Name);
-            Assert.Equal(2, captured.CategoryId);
-            Assert.Equal(1099m, captured.Price);
+            Assert.Equal(1,                    captured.Id);
+            Assert.Equal("Updated Laptop",     captured.Name);
+            Assert.Equal(2,                    captured.CategoryId);
+            Assert.Equal(1099m,                captured.Price);
             Assert.Equal("Updated description", captured.Description);
         }
 
         [Fact]
-        public async Task UpdateAsync_WhenProductDoesNotExist_ThrowsKeyNotFoundException()
+        public async Task UpdateAsync_WhenProductDoesNotExist_ThrowsNotFoundException()
         {
             // Arrange
-            _repositoryMock
-                .Setup(r => r.GetByIdAsync(99))
-                .ReturnsAsync((Product?)null);
+            _repositoryMock.Setup(r => r.GetByIdAsync(99)).ReturnsAsync((Product?)null);
 
             // Act & Assert
-            await Assert.ThrowsAsync<KeyNotFoundException>(() => _sut.UpdateAsync(MakeDto(id: 99)));
+            await Assert.ThrowsAsync<NotFoundException>(() => _sut.UpdateAsync(MakeDto(id: 99)));
             _repositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Product>()), Times.Never);
         }
 
         [Fact]
-        public async Task UpdateAsync_WhenValidationFails_ThrowsArgumentException_BeforeHittingRepository()
+        public async Task UpdateAsync_WhenValidationFails_ThrowsValidationException_BeforeHittingRepository()
         {
             // Arrange
             var dto = new ProductDTO { Id = 1, Name = "", CategoryId = 1, Price = 100m };
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => _sut.UpdateAsync(dto));
+            await Assert.ThrowsAsync<ValidationException>(() => _sut.UpdateAsync(dto));
             _repositoryMock.Verify(r => r.GetByIdAsync(It.IsAny<int>()), Times.Never);
-            _repositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Product>()), Times.Never);
+            _repositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Product>()),  Times.Never);
         }
 
         // ── DeleteAsync ───────────────────────────────────────────────────────
@@ -349,9 +340,7 @@ namespace BallastLane.Test.Tests.Services
         public async Task DeleteAsync_WhenProductExists_CallsRepositoryDeleteOnce()
         {
             // Arrange
-            _repositoryMock
-                .Setup(r => r.GetByIdAsync(1))
-                .ReturnsAsync(MakeProduct(1));
+            _repositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(MakeProduct(1));
 
             // Act
             await _sut.DeleteAsync(1);
@@ -361,15 +350,13 @@ namespace BallastLane.Test.Tests.Services
         }
 
         [Fact]
-        public async Task DeleteAsync_WhenProductDoesNotExist_ThrowsKeyNotFoundException()
+        public async Task DeleteAsync_WhenProductDoesNotExist_ThrowsNotFoundException()
         {
             // Arrange
-            _repositoryMock
-                .Setup(r => r.GetByIdAsync(99))
-                .ReturnsAsync((Product?)null);
+            _repositoryMock.Setup(r => r.GetByIdAsync(99)).ReturnsAsync((Product?)null);
 
             // Act & Assert
-            await Assert.ThrowsAsync<KeyNotFoundException>(() => _sut.DeleteAsync(99));
+            await Assert.ThrowsAsync<NotFoundException>(() => _sut.DeleteAsync(99));
             _repositoryMock.Verify(r => r.DeleteAsync(It.IsAny<int>()), Times.Never);
         }
 
@@ -377,9 +364,7 @@ namespace BallastLane.Test.Tests.Services
         public async Task DeleteAsync_WhenProductExists_DoesNotDeleteOtherProducts()
         {
             // Arrange
-            _repositoryMock
-                .Setup(r => r.GetByIdAsync(1))
-                .ReturnsAsync(MakeProduct(1));
+            _repositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(MakeProduct(1));
 
             // Act
             await _sut.DeleteAsync(1);
