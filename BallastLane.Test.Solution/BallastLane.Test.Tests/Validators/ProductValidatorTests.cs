@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BallastLane.Test.Tests.Validators
+﻿namespace BallastLane.Test.Tests.Validators
 {
     public class ProductValidatorTests
     {
