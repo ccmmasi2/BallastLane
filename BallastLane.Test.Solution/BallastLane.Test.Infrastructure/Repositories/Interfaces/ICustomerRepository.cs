@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BallastLane.Test.Infrastructure.Repositories.Interfaces
 {
-    internal class ICustomerRepository
+    public interface ICustomerRepository
     {
     }
 }

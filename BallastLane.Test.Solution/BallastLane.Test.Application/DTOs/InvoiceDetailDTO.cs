@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BallastLane.Test.Application.DTOs
 {
-    internal class InvoiceDetailDTO
+    public class InvoiceDetailDTO
     {
     }
 }

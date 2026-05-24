@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BallastLane.Test.Infrastructure.Repositories.Implementations
 {
-    internal class CustomerRepository
+    public class CustomerRepository
     {
     }
 }

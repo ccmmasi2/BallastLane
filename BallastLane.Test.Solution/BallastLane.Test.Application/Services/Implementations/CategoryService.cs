@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BallastLane.Test.Application.Services.Interface
+namespace BallastLane.Test.Application.Services.Implementations
 {
-    internal class ICategoryService
+    public class CategoryService
     {
     }
 }

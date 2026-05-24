@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BallastLane.Test.Infrastructure.Data
 {
-    internal class DbConnectionFactory
+    public class DbConnectionFactory
     {
     }
 }

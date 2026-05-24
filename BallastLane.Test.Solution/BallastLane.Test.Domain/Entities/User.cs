@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BallastLane.Test.Domain.Entities
 {
-    internal class User
+    public class User
     {
     }
 }
