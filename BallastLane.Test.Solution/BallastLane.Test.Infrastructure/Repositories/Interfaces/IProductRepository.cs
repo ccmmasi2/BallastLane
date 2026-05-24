@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BallastLane.Test.Infrastructure.Repositories.Implementation
+namespace BallastLane.Test.Infrastructure.Repositories.Interfaces
 {
-    internal class InvoiceRepository
+    internal class IProductRepository
     {
     }
 }
