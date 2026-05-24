@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BallastLane.Test.Infrastructure\BallastLane.Test.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

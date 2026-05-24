@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace BallastLane.Test.Infrastructure.Repositories.Interfaces
 {
-    public interface IProductRepository
+    public interface IUserRepository
     {
-        //Task CreateAsync(Test.Application.DTOs.ProductDTO dto);
     }
 }
