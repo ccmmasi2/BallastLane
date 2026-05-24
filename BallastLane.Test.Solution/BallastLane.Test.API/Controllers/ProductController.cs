@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BallastLane.Test.API.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class ProductController : ControllerBase
     {
     }
 }

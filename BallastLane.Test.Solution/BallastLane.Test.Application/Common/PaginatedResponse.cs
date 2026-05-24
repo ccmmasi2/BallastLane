@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BallastLane.Test.Infrastructure.Common
+namespace BallastLane.Test.Application.Common
 {
     public class PaginatedResponse<T>
     {
