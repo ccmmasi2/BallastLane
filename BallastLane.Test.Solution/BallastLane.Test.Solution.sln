@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Application", "BallastLane.Test.Application\BallastLane.Test.Application.csproj", "{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallastLane.Test.Tests", "BallastLane.Test.Tests\BallastLane.Test.Tests.csproj", "{5B12D43B-2726-43A0-BAE3-D17828D5B11B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{003A1ED9-C847-7B19-5F8D-25AAB8E13DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B12D43B-2726-43A0-BAE3-D17828D5B11B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B12D43B-2726-43A0-BAE3-D17828D5B11B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B12D43B-2726-43A0-BAE3-D17828D5B11B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B12D43B-2726-43A0-BAE3-D17828D5B11B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
