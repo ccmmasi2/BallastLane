@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BallastLane.Test.Application.DTOs;
 
 namespace BallastLane.Test.Application.Services.Interfaces
 {
     public interface IProductService
     {
+        Task<IEnumerable<ProductDTO>> GetAllAsync();
+        Task<ProductDTO?> GetByIdAsync(int id);
+        Task<IEnumerable<ProductDTO>> GetByCategoryIdAsync(int categoryId);
+        Task<int> CreateAsync(ProductDTO dto);
+        Task UpdateAsync(ProductDTO dto);
+        Task DeleteAsync(int id);
     }
 }

@@ -1,0 +1,140 @@
+/****************************************************************/
+/*
+At this time the base structure is already created
+I want to ensure the base structure that I already know works and continuing with IA since here
+*/
+/****************************************************************/
+
+Based on the SQL Server database structure defined in:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Data\Scripts\CreateTables.sql
+
+Generate and complete the corresponding:
+
+- Domain Entities
+- DTO classes
+
+for the following folders:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Domain\Entities
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\DTOs
+
+Requirements:
+- Use C#
+- Follow Clean Architecture principles
+- Use PascalCase naming conventions
+- Match SQL types appropriately
+- Include navigation-related properties only if necessary
+- DTOs should only contain fields required for API communication
+- Use nullable reference types where appropriate
+- Keep entities clean and framework-independent
+- Do not use Entity Framework annotations or attributes
+- Avoid business logic inside entities
+- Generate production-ready code
+
+
+/****************************************************************/
+/*Access data */
+/****************************************************************/
+
+Generate a repository implementation using ADO.NET and SqlConnection in these clases
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Repositories\Implementations
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Repositories\Interfaces
+
+Requirements:
+- Do not use Entity Framework
+- Do not use Dapper
+- Use parameterized queries
+- Use async/await
+- Follow repository pattern
+- Add proper exception handling
+- Use dependency injection
+- Use SQL transactions where necessary
+
+
+/****************************************************************/
+/*Test*/
+/****************************************************************/
+
+Generate xUnit tests using Moq for the ProductService in these clases: 
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Tests\Services
+
+Requirements:
+- Mock repository dependencies
+- Cover success and failure scenarios
+- Validate business rules
+- Follow AAA pattern
+- Use clean and readable test naming
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/
+
+
+
+/****************************************************************/
+/*xxx*/
+/****************************************************************/

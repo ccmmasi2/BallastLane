@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BallastLane.Test.Domain\BallastLane.Test.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
