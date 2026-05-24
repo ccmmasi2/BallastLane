@@ -7,6 +7,7 @@ using BallastLane.Test.Infrastructure.Repositories.Implementations;
 using BallastLane.Test.Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace BallastLane.Test.API.Extensions
@@ -80,6 +81,51 @@ namespace BallastLane.Test.API.Extensions
                         ClockSkew                = TimeSpan.Zero
                     };
                 });
+
+            services.AddAuthorization();
+
+            return services;
+        }
+
+        public static IServiceCollection AddSwagger(
+            this IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title       = "BallastLane API",
+                    Version     = "v1",
+                    Description = "REST API for the BallastLane billing system"
+                });
+
+                var securityScheme = new OpenApiSecurityScheme
+                {
+                    Name         = "Authorization",
+                    Description  = "Enter your JWT token: Bearer {token}",
+                    In           = ParameterLocation.Header,
+                    Type         = SecuritySchemeType.Http,
+                    Scheme       = "Bearer",
+                    BearerFormat = "JWT"
+                };
+
+                options.AddSecurityDefinition("Bearer", securityScheme);
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id   = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+            });
 
             return services;
         }

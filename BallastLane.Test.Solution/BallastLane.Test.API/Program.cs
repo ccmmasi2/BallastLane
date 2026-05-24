@@ -4,8 +4,7 @@ using BallastLane.Test.Infrastructure.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-
+builder.Services.AddSwagger();
 builder.Services.AddRepositories();
 builder.Services.AddValidators();
 builder.Services.AddApplicationServices();
@@ -16,10 +15,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
     await scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync();
 
-if (app.Environment.IsDevelopment())
-    app.MapOpenApi();
-
 app.UseHttpsRedirection();
+app.UseSwaggerDocumentation();
 app.UseApplicationMiddleware();
 app.MapControllers();
 
