@@ -2,6 +2,7 @@
 using BallastLane.Test.Application.Services.Interfaces;
 using BallastLane.Test.Application.Validators;
 using BallastLane.Test.Domain.Entities;
+using BallastLane.Test.Domain.Exceptions;
 using BallastLane.Test.Infrastructure.Repositories.Interfaces;
 
 namespace BallastLane.Test.Application.Services.Implementations
@@ -41,7 +42,7 @@ namespace BallastLane.Test.Application.Services.Implementations
 
             var existing = await _repository.GetByIdAsync(dto.Id);
             if (existing is null)
-                throw new KeyNotFoundException($"Category with id {dto.Id} was not found.");
+                throw new NotFoundException($"Category with id {dto.Id} was not found.");
 
             await _repository.UpdateAsync(MapToEntity(dto));
         }
@@ -50,7 +51,7 @@ namespace BallastLane.Test.Application.Services.Implementations
         {
             var existing = await _repository.GetByIdAsync(id);
             if (existing is null)
-                throw new KeyNotFoundException($"Category with id {id} was not found.");
+                throw new NotFoundException($"Category with id {id} was not found.");
 
             await _repository.DeleteAsync(id);
         }

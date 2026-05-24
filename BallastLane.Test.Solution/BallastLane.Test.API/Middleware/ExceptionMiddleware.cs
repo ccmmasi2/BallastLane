@@ -1,4 +1,5 @@
 ﻿using BallastLane.Test.Application.Common;
+using BallastLane.Test.Domain.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -6,7 +7,7 @@ namespace BallastLane.Test.API.Middleware
 {
     public class ExceptionMiddleware
     {
-        private readonly RequestDelegate            _next;
+        private readonly RequestDelegate              _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
 
         public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
@@ -32,8 +33,8 @@ namespace BallastLane.Test.API.Middleware
         {
             var (statusCode, message) = exception switch
             {
-                ArgumentException           => (HttpStatusCode.BadRequest,          exception.Message),
-                KeyNotFoundException        => (HttpStatusCode.NotFound,            exception.Message),
+                ValidationException         => (HttpStatusCode.BadRequest,          exception.Message),
+                NotFoundException           => (HttpStatusCode.NotFound,            exception.Message),
                 UnauthorizedAccessException => (HttpStatusCode.Unauthorized,        exception.Message),
                 InvalidOperationException   => (HttpStatusCode.BadRequest,          exception.Message),
                 _                           => (HttpStatusCode.InternalServerError, "An unexpected error occurred.")

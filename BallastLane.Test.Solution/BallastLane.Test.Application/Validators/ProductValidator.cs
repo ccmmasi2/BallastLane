@@ -1,4 +1,5 @@
 ﻿using BallastLane.Test.Application.DTOs;
+using BallastLane.Test.Domain.Exceptions;
 
 namespace BallastLane.Test.Application.Validators
 {
@@ -7,13 +8,13 @@ namespace BallastLane.Test.Application.Validators
         public void Validate(ProductDTO dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Name))
-                throw new ArgumentException("Product name is required.", nameof(dto.Name));
+                throw new ValidationException("Product name is required.");
 
             if (dto.CategoryId <= 0)
-                throw new ArgumentException("A valid category is required.", nameof(dto.CategoryId));
+                throw new ValidationException("A valid category is required.");
 
             if (dto.Price <= 0)
-                throw new ArgumentException("Price must be greater than zero.", nameof(dto.Price));
+                throw new ValidationException("Price must be greater than zero.");
         }
     }
 }

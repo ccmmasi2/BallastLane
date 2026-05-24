@@ -2,6 +2,7 @@
 using BallastLane.Test.Application.Services.Interfaces;
 using BallastLane.Test.Application.Validators;
 using BallastLane.Test.Domain.Entities;
+using BallastLane.Test.Domain.Exceptions;
 using BallastLane.Test.Infrastructure.Repositories.Interfaces;
 
 namespace BallastLane.Test.Application.Services.Implementations
@@ -46,7 +47,7 @@ namespace BallastLane.Test.Application.Services.Implementations
 
             var customer = await _customerRepository.GetByIdAsync(dto.CustomerId);
             if (customer is null)
-                throw new KeyNotFoundException($"Customer with id {dto.CustomerId} was not found.");
+                throw new NotFoundException($"Customer with id {dto.CustomerId} was not found.");
 
             // Snapshot customer data at the moment of invoicing so the record
             // remains accurate even if the customer is edited later.
@@ -70,7 +71,7 @@ namespace BallastLane.Test.Application.Services.Implementations
         {
             var existing = await _invoiceRepository.GetByIdAsync(id);
             if (existing is null)
-                throw new KeyNotFoundException($"Invoice with id {id} was not found.");
+                throw new NotFoundException($"Invoice with id {id} was not found.");
 
             await _invoiceRepository.DeleteAsync(id);
         }

@@ -1,4 +1,5 @@
 ﻿using BallastLane.Test.Application.DTOs;
+using BallastLane.Test.Domain.Exceptions;
 
 namespace BallastLane.Test.Application.Validators
 {
@@ -7,19 +8,19 @@ namespace BallastLane.Test.Application.Validators
         public void Validate(RegisterRequestDTO dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Username))
-                throw new ArgumentException("Username is required.", nameof(dto.Username));
+                throw new ValidationException("Username is required.");
 
             if (string.IsNullOrWhiteSpace(dto.Email))
-                throw new ArgumentException("Email is required.", nameof(dto.Email));
+                throw new ValidationException("Email is required.");
 
             if (!dto.Email.Contains('@'))
-                throw new ArgumentException("A valid email address is required.", nameof(dto.Email));
+                throw new ValidationException("A valid email address is required.");
 
             if (string.IsNullOrWhiteSpace(dto.Password))
-                throw new ArgumentException("Password is required.", nameof(dto.Password));
+                throw new ValidationException("Password is required.");
 
             if (dto.Password.Length < 6)
-                throw new ArgumentException("Password must be at least 6 characters long.", nameof(dto.Password));
+                throw new ValidationException("Password must be at least 6 characters long.");
         }
     }
 }

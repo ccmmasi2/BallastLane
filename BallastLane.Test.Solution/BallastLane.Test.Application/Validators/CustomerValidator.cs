@@ -1,4 +1,5 @@
 ﻿using BallastLane.Test.Application.DTOs;
+using BallastLane.Test.Domain.Exceptions;
 
 namespace BallastLane.Test.Application.Validators
 {
@@ -7,10 +8,10 @@ namespace BallastLane.Test.Application.Validators
         public void Validate(CustomerDTO dto)
         {
             if (string.IsNullOrWhiteSpace(dto.FullName))
-                throw new ArgumentException("Customer full name is required.", nameof(dto.FullName));
+                throw new ValidationException("Customer full name is required.");
 
             if (dto.Email is not null && !dto.Email.Contains('@'))
-                throw new ArgumentException("A valid email address is required.", nameof(dto.Email));
+                throw new ValidationException("A valid email address is required.");
         }
     }
 }
