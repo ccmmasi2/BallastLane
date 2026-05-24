@@ -23,8 +23,11 @@ namespace BallastLane.Test.Infrastructure.Data
 
         private async Task EnsureDatabaseExists()
         {
-            var masterConnectionString =
-                _connectionString.Replace("Database=BillingDb;", "Database=master;");
+            var builder = new SqlConnectionStringBuilder(_connectionString)
+            {
+                InitialCatalog = "master"
+            };
+            var masterConnectionString = builder.ConnectionString;
 
             using var connection = new SqlConnection(masterConnectionString);
 
@@ -43,7 +46,8 @@ namespace BallastLane.Test.Infrastructure.Data
 
         private async Task ExecuteScript(string path)
         {
-            var script = await File.ReadAllTextAsync(path);
+            var fullPath = Path.Combine(AppContext.BaseDirectory, path);
+            var script   = await File.ReadAllTextAsync(fullPath);
 
             using var connection = new SqlConnection(_connectionString);
 

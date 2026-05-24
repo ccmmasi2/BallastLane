@@ -15,4 +15,11 @@
     <ProjectReference Include="..\BallastLane.Test.Domain\BallastLane.Test.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Data\Scripts\*.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Scripts\%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+
 </Project>
