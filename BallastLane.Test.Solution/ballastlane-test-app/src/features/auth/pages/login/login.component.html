@@ -18,15 +18,16 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>Email: "CristianMontenegro&#64;test.com"</mat-label>
           <mat-icon matPrefix>email</mat-icon>
           <input matInput type="email" formControlName="email" autocomplete="username" />
+  
           <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required.</mat-error>
           <mat-error *ngIf="form.get('email')?.hasError('email')">Enter a valid email address.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Password</mat-label>
+          <mat-label>Password: "password123"</mat-label>
           <mat-icon matPrefix>lock</mat-icon>
           <input
             matInput
@@ -36,6 +37,7 @@
           <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
             <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
+ 
           <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required.</mat-error>
           <mat-error *ngIf="form.get('password')?.hasError('minlength')">At least 6 characters required.</mat-error>
         </mat-form-field>

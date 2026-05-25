@@ -107,5 +107,41 @@ This process runs automatically on application startup.
 1. Open the solution in Visual Studio 2022
 2. Configure SQL Server connection string in:
 
-```json
 appsettings.json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=cmontenegro\\SQLEXPRESS;Database=BallastLaneTest;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+
+---
+
+## credentials
+ 
+Use the following credentials to access the application:
+
+login: 
+  "username": "CristianMontenegro",
+  "email": "CristianMontenegro@test.com",
+  "password": "password123"
+
+---
+
+# Frontend Setup
+
+Navigate to the Angular application:
+
+in CMD
+cd ballastlane-test-app
+
+Install dependencies:
+npm install
+
+Run the application:
+ng serve
+
+Frontend URL:
+http://localhost:4200
+
+ 
+# Author
+
+Developed by Cristian Montenegro

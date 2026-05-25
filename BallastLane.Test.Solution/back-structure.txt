@@ -1,0 +1,148 @@
+D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION
+|   BallastLane.Test.Solution.sln
+|   estructura-back.txt
+|   
++---.claude
+|       settings.local.json
+|       
++---.github
+|       copilot-instructions.md
++---BallastLane.Test.API
+|   |   appsettings.Development.json
+|   |   appsettings.json
+|   |   BallastLane.Test.API.csproj
+|   |   BallastLane.Test.API.csproj.user
+|   |   BallastLane.Test.API.http
+|   |   Program.cs
+|   |   
+|   +---Controllers
+|   |       AuthController.cs
+|   |       CategoryController.cs
+|   |       CustomerController.cs
+|   |       InvoiceController.cs
+|   |       ProductController.cs
+|   |       
+|   +---Extensions
+|   |       ApplicationBuilderExtensions.cs
+|   |       ServiceCollectionExtensions.cs
+|   |       
+|   +---Middleware
+|   |       ExceptionMiddleware.cs
+|   |       
+|   \---Properties
+|           launchSettings.json
+|           
++---BallastLane.Test.Application
+|   |   BallastLane.Test.Application.csproj
+|   |   
+|   +---Common
+|   |       ApiResponse.cs
+|   |       PaginatedResponse.cs
+|   |       PaginationRequest.cs
+|   |       Roles.cs
+|   |       
+|   +---DTOs
+|   |       AuthResponseDTO.cs
+|   |       CategoryDTO.cs
+|   |       CustomerDTO.cs
+|   |       InvoiceDetailDTO.cs
+|   |       InvoiceDTO.cs
+|   |       LoginRequestDTO.cs
+|   |       ProductDTO.cs
+|   |       RegisterRequestDTO.cs
+|   |       
+|   +---Services
+|   |   +---Implementations
+|   |   |       AuthService.cs
+|   |   |       CategoryService.cs
+|   |   |       CustomerService.cs
+|   |   |       InvoiceService.cs
+|   |   |       ProductService.cs
+|   |   |       
+|   |   \---Interfaces
+|   |           IAuthService.cs
+|   |           ICategoryService.cs
+|   |           ICustomerService.cs
+|   |           IInvoiceService.cs
+|   |           IProductService.cs
+|   |           
+|   \---Validators
+|           CategoryValidator.cs
+|           CustomerValidator.cs
+|           InvoiceValidator.cs
+|           LoginValidator.cs
+|           ProductValidator.cs
+|           RegisterValidator.cs
+|           
++---BallastLane.Test.Domain
+|   |   BallastLane.Test.Domain.csproj
+|   |   BallastLane.Test.Domain.csproj.user
+|   |   
+|   +---Entities
+|   |       Category.cs
+|   |       Customer.cs
+|   |       Invoice.cs
+|   |       InvoiceDetail.cs
+|   |       Product.cs
+|   |       User.cs
+|   |       
+|   \---Exceptions
+|           NotFoundException.cs
+|           ValidationException.cs
+|           
++---BallastLane.Test.Infrastructure
+|   |   BallastLane.Test.Infrastructure.csproj
+|   |   
+|   +---Authentication
+|   |       JwtTokenGenerator.cs
+|   |       PasswordHasher.cs
+|   |       
+|   +---Data
+|   |   |   DatabaseInitializer.cs
+|   |   |   DbConnectionFactory.cs
+|   |   |   
+|   |   \---Scripts
+|   |           CreateTables.sql
+|   |           SeedData.sql
+|   |           
+|   \---Repositories
+|       +---Implementations
+|       |       CategoryRepository.cs
+|       |       CustomerRepository.cs
+|       |       InvoiceRepository.cs
+|       |       ProductRepository.cs
+|       |       UserRepository.cs
+|       |       
+|       \---Interfaces
+|               ICategoryRepository.cs
+|               ICustomerRepository.cs
+|               IInvoiceRepository.cs
+|               IProductRepository.cs
+|               IUserRepository.cs
+|               
+\---BallastLane.Test.Tests
+    |   BallastLane.Test.Tests.csproj
+    |   
+    +---Controllers
+    |       AuthControllerTests.cs
+    |       CategoryControllerTests.cs
+    |       CustomerControllerTests.cs
+    |       InvoiceControllerTests.cs
+    |       ProductControllerTests.cs
+    |       
+    +---Repositories
+    +---Services
+    |       AuthServiceTest.cs
+    |       CategoryServiceTests.cs
+    |       CustomerServiceTests.cs
+    |       InvoiceServiceTest.cs
+    |       ProductServiceTest.cs
+    |       
+    \---Validators
+            CategoryValidatorTests.cs
+            CustomerValidatorTests.cs
+            InvoiceValidatorTests.cs
+            LoginValidatorTests.cs
+            ProductValidatorTests.cs
+            RegisterValidatorTests.cs
+            

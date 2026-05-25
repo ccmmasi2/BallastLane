@@ -1,5 +1,3 @@
-Listado de rutas de carpetas
-El número de serie del volumen es 52D2-F1D7
 D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
 |   .editorconfig
 |   .gitignore
@@ -13,40 +11,10 @@ D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
 |   tsconfig.json
 |   tsconfig.spec.json
 |   
-+---.angular
-|   \---cache
-|       \---19.2.26
-|           \---ballastlane-test-app
-|               |   .tsbuildinfo
-|               |   
-|               \---vite
-|                   +---deps
-|                   |       @angular_core.js
-|                   |       @angular_core.js.map
-|                   |       @angular_platform-browser.js
-|                   |       @angular_platform-browser.js.map
-|                   |       @angular_router.js
-|                   |       @angular_router.js.map
-|                   |       chunk-7MB6AACE.js
-|                   |       chunk-7MB6AACE.js.map
-|                   |       chunk-V6YNHAKD.js
-|                   |       chunk-V6YNHAKD.js.map
-|                   |       package.json
-|                   |       _metadata.json
-|                   |       
-|                   \---deps_ssr
-|                           package.json
-|                           _metadata.json
-|                           
-+---.vscode
-|       extensions.json
-|       launch.json
-|       tasks.json
-|       
 +---environments
 |       environment.prod.ts
 |       environment.ts
-|       
+|          
 +---public
 |       favicon.ico
 |       
@@ -56,14 +24,57 @@ D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
     |   styles.scss
     |   
     +---app
-    |       app.component.html
-    |       app.component.scss
-    |       app.component.spec.ts
-    |       app.component.ts
-    |       app.config.ts
-    |       app.routes.ts
-    |       
+    |   |   app.component.html
+    |   |   app.component.scss
+    |   |   app.component.spec.ts
+    |   |   app.component.ts
+    |   |   app.config.ts
+    |   |   app.routes.ts
+    |   |   
+    |   +---core
+    |   |   \---models
+    |   |           auth-response.model.ts
+    |   |           login-request.model.ts
+    |   |           register-request.model.ts
+    |   |           user.model.ts
+    |   |           
+    |   +---features
+    |   |   +---categories
+    |   |   |   \---models
+    |   |   |           category.model.ts
+    |   |   |           create-category.model.ts
+    |   |   |           update-category.model.ts
+    |   |   |           
+    |   |   +---customers
+    |   |   |   \---models
+    |   |   |           create-customer.model.ts
+    |   |   |           customer.model.ts
+    |   |   |           update-customer.model.ts
+    |   |   |           
+    |   |   +---invoices
+    |   |   |   \---models
+    |   |   |           create-invoice.model.ts
+    |   |   |           invoice-detail.model.ts
+    |   |   |           invoice.model.ts
+    |   |   |           update-invoice.model.ts
+    |   |   |           
+    |   |   \---products
+    |   |       \---models
+    |   |               create-product.model.ts
+    |   |               product.model.ts
+    |   |               update-product.model.ts
+    |   |               
+    |   \---shared
+    |       \---models
+    |               api-response.model.ts
+    |               paginated-response.model.ts
+    |               
     +---core
+    |   +---constraints
+    |   |       api.constants.ts
+    |   |       roles.constants.ts
+    |   |       routes.constants.ts
+    |   |       
     |   +---guards
     |   |       auth.guard.ts
     |   |       
@@ -75,9 +86,10 @@ D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
     |   |       login-request.model.ts
     |   |       user.model.ts
     |   |       
-    |   \---services
-    |           auth.service.ts
-    |           
+    |   +---services
+    |   |       auth.service.ts
+    |   |       
+    |   \---utils
     +---features
     |   +---auth
     |   |   |   auth.module.ts
@@ -90,6 +102,7 @@ D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
     |   |               login.component.ts
     |   |               
     |   +---categories
+    |   |   |   categories-routing.module.ts
     |   |   |   categories.module.ts
     |   |   |   
     |   |   +---components
@@ -269,6 +282,8 @@ D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
     |           dashboard.component.ts
     |           
     \---shared
+        |   shared.module.ts
+        |   
         +---components
         |   +---confirm-dialog
         |   |       confirm-dialog.component.html
@@ -295,4 +310,8 @@ D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
         |           table.component.ts
         |           
         +---directives
+        +---models
+        |       api-response.model.ts
+        |       paginated-response.model.ts
+        |       
         \---pipes

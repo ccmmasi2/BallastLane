@@ -55,12 +55,168 @@ Requirements:
 
 
 /****************************************************************/
+/*service interfaces*/
+/****************************************************************/
+
+I have my code created on these clases in:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Repositories
+
+Generate the corresponding service interfaces in:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Services\Interfaces
+
+Requirements:
+- Use async/await
+- Use DTOs instead of entities
+- Follow Clean Architecture principles
+- Keep business logic outside controllers
+- Include CRUD methods where applicable
+- Use Task<T> return types
+- Use clean naming conventions
+- Do not implement logic yet
+- Do not use Entity Framework
+- Do not use MediatR
+
+
+/****************************************************************/
+/*service implementations*/
+/****************************************************************/
+
+I have my code created on these clases in:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Repositories
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Services\Interfaces
+
+Generate service implementations for:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Services\Implementations
+
+Requirements:
+- Use dependency injection
+- Inject repository interfaces
+- Use DTOs for input/output
+- Map DTOs manually
+- Add business validation logic where necessary
+- Use validators from:
+  D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Validators
+- Use async/await
+- Keep controllers thin
+- Keep repositories responsible only for data access
+- Do not use AutoMapper
+- Do not use Entity Framework
+- Do not use MediatR
+- Use proper exception handling
+
+
+/****************************************************************/
+/*ApiController*/
+/****************************************************************/
+
+I have my code created on these clases in:
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Services
+
+Generate ASP.NET Core API controllers in:
+
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.API\Controllers
+
+Requirements:
+- Use RESTful conventions
+- Use dependency injection
+- Controllers must remain thin
+- Controllers should only call services
+- Use DTOs only
+- Use IActionResult return types
+- Use proper HTTP verbs:
+  - GET
+  - POST
+  - PUT
+  - DELETE
+- Use proper HTTP status codes:
+  - 200
+  - 201
+  - 400
+  - 401
+  - 404
+- Use [ApiController]
+- Use [Route("api/[controller]")]
+- Use [Authorize] for protected endpoints
+- Use [AllowAnonymous] only for login/register
+- Do not place business logic inside controllers
+- Use async/await
+
+
+/****************************************************************/
+/*AuthController*/
+/****************************************************************/
+
+Generate an AuthController for JWT authentication.
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.API\Controllers\AuthController.cs
+
+Requirements:
+- Include register endpoint
+- Include login endpoint
+- Use IAuthService
+- Return JWT token after successful login
+- Use AllowAnonymous
+- Use LoginRequestDTO and RegisterRequestDTO
+- Return AuthResponseDTO
+- Use proper status codes
+- Use async/await
+- Keep controller thin
+- Generate production-ready ASP.NET Core code
+
+
+/****************************************************************/
+/*dependency injection*/
+/****************************************************************/
+
+Generate dependency injection code for the following layers in this class
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.API\Extensions\ServiceCollectionExtensions.cs
+
+- Services
+- Repositories
+- Validators
+- Authentication services
+ 
+Requirements:
+- Use IServiceCollection extension methods
+- Register interfaces with implementations
+- Use scoped lifetime
+- Register JWT authentication
+- Keep Program.cs clean
+- Follow ASP.NET Core best practices
+
+
+/****************************************************************/
+/*Program.cs*/
+/****************************************************************/
+
+Generate a clean Program.cs  
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.API\Program.cs
+
+Requirements:
+- Use extension methods
+- Configure Swagger
+- Configure JWT authentication
+- Configure authorization
+- Configure global exception middleware
+- Register controllers
+- Enable HTTPS redirection
+- Initialize database on startup
+- Keep Program.cs minimal and clean
+
+
+/****************************************************************/
 /*Test*/
 /****************************************************************/
 
-Generate xUnit tests using Moq for the ProductService in these clases: 
+Generate xUnit tests using Moq for the Controllers, repositories, services and validators, clases in these folders: 
 
-D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Tests\Services
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Repositories\
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Services\
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Application\Validators\
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.API\Controllers\
 
 Requirements:
 - Mock repository dependencies
@@ -71,70 +227,561 @@ Requirements:
 
 
 /****************************************************************/
-/*xxx*/
+/*Seed data*/
+/****************************************************************/
+
+Lets create seed data using these files as reference:
+
+Database schema:
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Data\Scripts\CreateTables.sql
+
+Infrastructure initializer:
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Infrastructure\Data\DatabaseInitializer.cs
+
+Repositories and entities:
+D:\Repository\Estudio\BallastLane\BallastLane.Test.Solution\BallastLane.Test.Domain\Entities
+
+Requirements:
+
+1. The database must automatically initialize when the API starts.
+2. Execute CreateTables.sql if tables do not exist.
+3. Insert seed data only if the tables are empty.
+4. Use clean architecture principles.
+5. Use ADO.NET only.
+6. Use async methods.
+7. Follow repository pattern already implemented in the project.
+8. Generate production-quality code.
+
+Seed data requirements:
+
+Create this admin user:
+
+{
+  "username": "CristianMontenegro",
+  "email": "CristianMontenegro@test.com",
+  "password": "password123"
+}
+
+The password must be hashed using the existing PasswordHasher class.
+
+Create:
+- 5 categories
+- 10 products (2 products per category)
+- 2 customers
+- 5 invoices
+
+Invoice requirements:
+- Invoice 1 → 10 products → customer 1
+- Invoice 2 → 8 products → customer 2
+- Invoice 3 → 5 products → customer 1
+- Invoice 4 → 3 products → customer 2
+- Invoice 5 → 1 product → customer 1
+
+Also:
+- Generate realistic prices and totals
+- Create invoice detail records correctly
+- Maintain foreign key consistency
+- Use UTC dates
+- Avoid duplicate seed inserts
+
+Generate:
+1. Updated DatabaseInitializer.cs
+2. SeedData.sql
+3. Any helper methods required
+4. Any necessary improvements to Program.cs registration
+
+
+
+
+
+
+/****************************************************************/
+/*Front, base context*/
+/****************************************************************/
+
+I am developing a system with:
+
+Backend:
+- ASP.NET Core Web API
+- Layered Architecture:
+  - API
+  - Application
+  - Domain
+  - Infrastructure
+- JWT Authentication
+- DTOs
+- Services
+- Repository Pattern
+
+Frontend:
+- Angular 19
+- Feature-based architecture
+- Structure:
+
+src/app
+  core
+  features
+  layouts
+  shared
+
+Each feature contains:
+- components
+- models
+- pages
+- services
+
+The application includes these modules:
+- auth
+- categories
+- customers
+- products
+- invoices
+
+I need all Angular code to follow:
+- best practices
+- strong typing
+- separation of concerns
+- reusable components
+- Reactive Forms
+- standalone components disabled
+- modular architecture
+- consistent naming conventions
+- HttpClient services
+- loading and error state handling
+
+The backend endpoints follow a traditional REST API structure.
+
+Generate clean, professional, and scalable code.
+Do not simplify the architecture.
+
+
+/****************************************************************/
+/*models*/
+/****************************************************************/
+
+Based on these ASP.NET Core backend DTOs:
+
+- CategoryDTO
+- ProductDTO
+- CustomerDTO
+- InvoiceDTO
+- InvoiceDetailDTO
+- AuthResponseDTO
+- LoginRequestDTO
+- RegisterRequestDTO
+
+Generate the Angular TypeScript models for:
+
+src/app/features/[feature]/models
+
+Requirements:
+- use interfaces
+- strong typing
+- consistent naming
+- separate:
+  - main model
+  - create model
+  - update model
+- use camelCase
+- respect entity relationships
+- invoice must include invoice details
+
+Return:
+- folder/file structure
+- complete content for each file
+
+
+/****************************************************************/
+/*category model / service*/
+/****************************************************************/
+
+Generate the Angular service for Categories.
+
+Location:
+src/app/features/categories/services/category.service.ts
+
+Backend:
+- ASP.NET Core Web API
+- JWT Authentication
+
+The service must:
+- use HttpClient
+- use environment.apiUrl
+- include:
+  - getAll()
+  - getById(id)
+  - create()
+  - update()
+  - delete()
+- use RxJS
+- use strong typing
+- handle query params if necessary
+- use observables
+- follow Angular 19 best practices
+
+Also generate:
+- correct imports
+- JWT header handling if necessary
+- basic spec file
+
+
+/****************************************************************/
+/*product model / service*/
+/****************************************************************/
+
+Generate the Angular service for Products.
+
+Location:
+src/app/features/products/services/product.service.ts
+
+Backend:
+- ASP.NET Core Web API
+- JWT Authentication
+
+The service must:
+- use HttpClient
+- use environment.apiUrl
+- include:
+  - getAll()
+  - getById(id)
+  - create()
+  - update()
+  - delete()
+- use RxJS
+- use strong typing
+- handle query params if necessary
+- use observables
+- follow Angular 19 best practices
+
+Also generate:
+- correct imports
+- JWT header handling if necessary
+- basic spec file
+
+
+
+/****************************************************************/
+/*customer model / service*/
+/****************************************************************/
+
+Generate the Angular service for Customers.
+
+Location:
+src/app/features/customers/services/customer.service.ts
+
+Backend:
+- ASP.NET Core Web API
+- JWT Authentication
+
+The service must:
+- use HttpClient
+- use environment.apiUrl
+- include:
+  - getAll()
+  - getById(id)
+  - create()
+  - update()
+  - delete()
+- use RxJS
+- use strong typing
+- handle query params if necessary
+- use observables
+- follow Angular 19 best practices
+
+Also generate:
+- correct imports
+- JWT header handling if necessary
+- basic spec file
+
+
+
+/****************************************************************/
+/*invoice model / service*/
+/****************************************************************/
+
+Generate the Angular service for Invoices.
+
+Location:
+src/app/features/invoices/services/invoice.service.ts
+
+Backend:
+- ASP.NET Core Web API
+- JWT Authentication
+
+The service must:
+- use HttpClient
+- use environment.apiUrl
+- include:
+  - getAll()
+  - getById(id)
+  - create()
+  - update()
+  - delete()
+- use RxJS
+- use strong typing
+- handle query params if necessary
+- use observables
+- follow Angular 19 best practices
+
+Invoice relationships:
+- Invoice has Customer
+- Invoice has multiple InvoiceDetails
+- InvoiceDetail references Product
+
+Also generate:
+- correct imports
+- JWT header handling if necessary
+- basic spec file
+
+
+
+
+/****************************************************************/
+/*category component / pages */
+/****************************************************************/
+
+Generate the complete CRUD structure for Categories in Angular 19.
+
+Use this structure:
+
+src/app/features/categories
+  components
+  models
+  pages
+  services
+
+Generate:
+- category-list
+- category-form
+- category-table
+- category-card
+- category.service
+- models
+
+Requirements:
+- use Reactive Forms
+- use Angular Material
+- use RxJS
+- strong typing
+- scalable architecture
+- clean code
+- loading state
+- error handling
+- reusable components
+
+Operations:
+- list
+- create
+- edit
+- delete
+
+Generate:
+- html
+- ts
+- scss
+- spec files
+
+
+/****************************************************************/
+/product component / pages*/
+/****************************************************************/
+
+Generate the complete CRUD structure for Products in Angular 19.
+
+Use this structure:
+
+src/app/features/products
+  components
+  models
+  pages
+  services
+
+Generate:
+- product-list
+- product-form
+- product-table
+- product-card
+- product.service
+- models
+
+Requirements:
+- use Reactive Forms
+- use Angular Material
+- use RxJS
+- strong typing
+- scalable architecture
+- clean code
+- loading state
+- error handling
+- reusable components
+
+Product relationships:
+- Product belongs to Category
+- Product must display Category information
+- Product form must allow Category selection
+
+Product form requirements:
+- name field
+- description field
+- price field
+- stock field
+- category selector
+- validations
+- loading indicators
+- submit button states
+
+Operations:
+- list
+- create
+- edit
+- delete
+
+Generate:
+- html
+- ts
+- scss
+- spec files
+
+
+/****************************************************************/
+/customer component / pages*/
+/****************************************************************/
+
+Generate the complete CRUD structure for Customers in Angular 19.
+
+Use this structure:
+
+src/app/features/customers
+  components
+  models
+  pages
+  services
+
+Generate:
+- customer-list
+- customer-form
+- customer-table
+- customer-card
+- customer.service
+- models
+
+Requirements:
+- use Reactive Forms
+- use Angular Material
+- use RxJS
+- strong typing
+- scalable architecture
+- clean code
+- loading state
+- error handling
+- reusable components
+
+Operations:
+- list
+- create
+- edit
+- delete
+
+Generate:
+- html
+- ts
+- scss
+- spec files
+
+
+
+/****************************************************************/
+/invoice component / pages*/
+/****************************************************************/
+
+Generate the complete CRUD structure for Invoices in Angular 19.
+
+Use this structure:
+
+src/app/features/invoices
+  components
+  models
+  pages
+  services
+
+Generate:
+- invoice-list
+- invoice-form
+- invoice-details
+- invoice-table
+- invoice-summary
+- invoice-detail-row
+- invoice-products-selector
+- invoice.service
+- models
+
+Invoice relationships:
+- Invoice has Customer
+- Invoice has multiple InvoiceDetails
+- InvoiceDetail references Product
+
+Requirements:
+- use Reactive Forms
+- use FormArray for invoice details
+- use Angular Material
+- use RxJS
+- strong typing
+- scalable architecture
+- clean code
+- loading state
+- error handling
+- reusable components
+
+Invoice form requirements:
+- select customer
+- add/remove products dynamically
+- quantity validation
+- automatic subtotal calculation
+- automatic grand total calculation
+- invoice summary section
+- invoice details table
+- product selector component
+
+Operations:
+- list
+- create
+- edit
+- delete
+- details
+
+Generate:
+- html
+- ts
+- scss
+- spec files
+
+
+/****************************************************************/
+/*routing*/
 /****************************************************************/
 
 
+Generate the complete routing structure for Angular 19 using lazy loading.
 
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
+Features:
+- auth
+- categories
+- customers
+- products
+- invoices
 
+Requirements:
+- protected routes using auth guard
+- public login route
+- dashboard layout
+- lazy loaded modules
+- CRUD routes:
+  - list
+  - create
+  - edit/:id
+  - details/:id
 
+Generate:
+- app.routes.ts
+- feature routes
 
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
-
-
-
-/****************************************************************/
-/*xxx*/
-/****************************************************************/
