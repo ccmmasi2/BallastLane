@@ -1,4 +1,451 @@
-/* You can add global styles to this file, and also import other style files */
+// ================================================================
+// BALLASTLANE — GLOBAL STYLES
+// ================================================================
+//
+//  1.  Design Tokens        (SCSS vars + CSS custom properties)
+//  2.  Base Reset            (html/body, box-model)
+//  3.  Angular Material      (overrides, elevation, typography)
+//  4.  Page Containers       (.page-container + width utilities)
+//  5.  Page Headers          (.page-header, .header-actions)
+//  6.  Error States          (.error-card, .error-text, .inline-error)
+//  7.  Forms                 (.full-width, .form-actions, .section-card)
+//  8.  Tables                (.table-container, .no-data, .cell-*)
+//  9.  Detail Pages          (.detail-card, .field-row, .field-label/value)
+// 10.  Cards                 (.card-description, .card-actions)
+// 11.  Loading               (.loading-overlay)
+// 12.  Dialogs               (mat-dialog-content)
+// 13.  Flex Utilities        (.flex-*, .gap-*)
+// 14.  Responsive Helpers    (breakpoints, .hide-sm)
+//
+// ================================================================
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// ================================================================
+// 1. DESIGN TOKENS
+// ================================================================
+
+// — Color palette
+$color-error:          #f44336;
+$color-success:        #1b5e20;
+$color-primary:        #3f51b5;
+$color-accent:         #38bdf8;
+
+$color-dark-900:       #0f172a;
+$color-dark-800:       #1e293b;
+
+$color-bg-content:     #f8fafc;
+$color-bg-surface:     #ffffff;
+
+$color-text-primary:   rgba(0, 0, 0, 0.87);
+$color-text-secondary: rgba(0, 0, 0, 0.6);
+$color-text-muted:     rgba(0, 0, 0, 0.54);
+$color-text-disabled:  rgba(0, 0, 0, 0.38);
+
+$color-divider:        rgba(0, 0, 0, 0.12);
+$color-border-subtle:  rgba(0, 0, 0, 0.08);
+
+// — Spacing scale
+$space-xs:  0.25rem;   //  4px
+$space-sm:  0.5rem;    //  8px
+$space-md:  1rem;      // 16px
+$space-lg:  1.5rem;    // 24px
+$space-xl:  2rem;      // 32px
+
+// — Breakpoints
+$bp-sm: 600px;
+$bp-md: 960px;
+$bp-lg: 1200px;
+
+// — Page widths
+$width-form:    600px;
+$width-detail:  800px;
+$width-invoice: 960px;
+$width-list:    1200px;
+
+// — CSS Custom Properties (accessible at runtime / in Angular templates)
+:root {
+  --color-error:          #{$color-error};
+  --color-success:        #{$color-success};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted:     #{$color-text-muted};
+  --color-bg-content:     #{$color-bg-content};
+  --space-sm:             #{$space-sm};
+  --space-md:             #{$space-md};
+  --space-lg:             #{$space-lg};
+  --space-xl:             #{$space-xl};
+}
+
+
+// ================================================================
+// 2. BASE RESET
+// ================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  color: $color-text-primary;
+  background-color: $color-bg-content;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+
+// ================================================================
+// 3. ANGULAR MATERIAL OVERRIDES
+// ================================================================
+
+// — Remove shadow from elevation-0 tables
+.mat-elevation-z0 {
+  box-shadow: none !important;
+}
+
+// — Transparent paginator background
+.mat-mdc-paginator {
+  background: transparent !important;
+}
+
+// — Full-width mat-table by default
+.mat-mdc-table {
+  width: 100%;
+}
+
+// — Make mat-card-content readable inside detail cards
+.mat-mdc-card-content:first-child {
+  padding-top: 0;
+}
+
+// — Consistent mat-form-field bottom spacing
+.mat-mdc-form-field {
+  margin-bottom: $space-xs;
+}
+
+// — Snackbar text wraps properly on small screens
+.mat-mdc-snack-bar-container {
+  word-break: break-word;
+}
+
+
+// ================================================================
+// 4. PAGE CONTAINERS
+// ================================================================
+
+// Base container — applied by all feature page components.
+// Components may override only max-width in their local SCSS.
+.page-container {
+  padding: $space-xl;
+  margin: 0 auto;
+  max-width: $width-list; // default for list pages
+
+  @media (max-width: $bp-sm) {
+    padding: $space-md;
+  }
+}
+
+
+// ================================================================
+// 5. PAGE HEADERS
+// ================================================================
+
+// Works for all three page-header variants:
+//
+//  LIST:    [h1 — grows] [action-button]
+//  DETAIL:  [back-btn] [h1 — grows] [header-actions]
+//  FORM:    [h1 — grows]
+//
+// Setting h1 { flex: 1 } achieves correct layout for all three
+// without any modifier class or template changes.
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-lg;
+
+  h1 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  flex-shrink: 0;
+}
+
+
+// ================================================================
+// 6. ERROR STATES
+// ================================================================
+
+// Error feedback card (mat-card with red left accent border)
+.error-card {
+  margin-bottom: $space-md;
+  border-left: 4px solid $color-error;
+
+  .error-text {
+    color: $color-error;
+    margin: 0;
+  }
+}
+
+// Inline error line (icon + text, used inside forms/sections)
+.inline-error {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  color: $color-error;
+  font-size: 0.875rem;
+  margin: $space-xs 0;
+
+  mat-icon {
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+
+// ================================================================
+// 7. FORMS
+// ================================================================
+
+// Full-width mat-form-field wrapper — use on the <mat-form-field> element
+.full-width {
+  width: 100%;
+  display: block;
+  margin-bottom: $space-sm;
+}
+
+// Submit / cancel button row at the bottom of a form
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $space-sm;
+  margin-top: $space-sm;
+}
+
+// Section card spacing inside multi-step forms (invoice form)
+.section-card {
+  margin-bottom: $space-lg;
+}
+
+// Muted option hint text inside mat-select options
+.option-hint {
+  color: $color-text-muted;
+  font-size: 0.85em;
+}
+
+
+// ================================================================
+// 8. TABLES
+// ================================================================
+
+// Responsive scroll wrapper for all mat-table components
+.table-container {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+  }
+}
+
+// Empty-state row when the data source is empty
+.no-data {
+  padding: $space-lg;
+  text-align: center;
+  color: $color-text-muted;
+  font-size: 0.9rem;
+}
+
+// Truncate long text (descriptions, addresses) in table cells
+.cell-truncate {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Monetary / amount emphasis in table cells
+.cell-amount {
+  font-weight: 500;
+}
+
+
+// ================================================================
+// 9. DETAIL PAGES
+// ================================================================
+
+// Key–value layout card used in all *-details pages
+.detail-card {
+  .field-row {
+    display: flex;
+    align-items: flex-start;
+    padding: $space-md 0;
+
+    .field-label {
+      width: 160px;
+      font-weight: 500;
+      color: $color-text-secondary;
+      flex-shrink: 0;
+    }
+
+    .field-value {
+      flex: 1;
+
+      // Multi-line text (description fields)
+      &.field-value--pre {
+        white-space: pre-wrap;
+      }
+
+      // Currency / price emphasis
+      &.field-value--price {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $color-success;
+      }
+    }
+  }
+
+  // Divider between rows — flush to card content edges
+  mat-divider {
+    margin: 0;
+  }
+}
+
+
+// ================================================================
+// 10. CARDS
+// ================================================================
+
+// Muted secondary text inside cards (description, subtitle body)
+.card-description {
+  color: $color-text-secondary;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  min-height: 1.25rem;
+}
+
+// Trailing action buttons row inside a card
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-xs;
+  padding-top: $space-sm;
+}
+
+
+// ================================================================
+// 11. LOADING
+// ================================================================
+
+// Spinner + message centered block — used by LoadingSpinnerComponent
+.loading-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xl;
+  gap: $space-md;
+
+  p {
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}
+
+
+// ================================================================
+// 12. DIALOGS
+// ================================================================
+
+// Standard dialog message body
+mat-dialog-content {
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+
+// ================================================================
+// 13. FLEX UTILITIES
+// ================================================================
+
+.flex         { display: flex; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-end     { display: flex; align-items: center; justify-content: flex-end; }
+.flex-wrap    { flex-wrap: wrap; }
+.flex-1       { flex: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
+
+.align-center { align-items: center; }
+.align-start  { align-items: flex-start; }
+
+.gap-xs { gap: $space-xs; }
+.gap-sm { gap: $space-sm; }
+.gap-md { gap: $space-md; }
+.gap-lg { gap: $space-lg; }
+
+.w-full   { width: 100%; }
+.h-full   { height: 100%; }
+.mb-sm    { margin-bottom: $space-sm; }
+.mb-md    { margin-bottom: $space-md; }
+.mb-lg    { margin-bottom: $space-lg; }
+.mt-sm    { margin-top: $space-sm; }
+.mt-md    { margin-top: $space-md; }
+
+
+// ================================================================
+// 14. RESPONSIVE HELPERS
+// ================================================================
+
+@media (max-width: $bp-sm) {
+  // Stack horizontally-aligned items vertically on mobile
+  .stack-sm {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  // Hide elements below sm breakpoint
+  .hide-sm {
+    display: none !important;
+  }
+
+  // Full-width elements on mobile
+  .full-width-sm {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: $bp-md) {
+  // Hide elements above md breakpoint
+  .hide-md-up {
+    display: none !important;
+  }
+}

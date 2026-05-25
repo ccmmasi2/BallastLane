@@ -1,13 +1,2 @@
-.loading-overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  gap: 1rem;
-
-  p {
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 0.875rem;
-  }
-}
+// Styles moved to global — see styles.scss:
+// .loading-overlay  →  §11 Loading

@@ -1,17 +1,5 @@
-.table-container {
-  overflow-x: auto;
-
-  table {
-    width: 100%;
-  }
-
-  .total-cell {
-    font-weight: 500;
-  }
-
-  .no-data {
-    padding: 1.5rem;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.54);
-  }
+// .table-container and .no-data are global (§8 Tables)
+// Invoice-specific: bold total column
+.total-cell {
+  font-weight: 500;
 }

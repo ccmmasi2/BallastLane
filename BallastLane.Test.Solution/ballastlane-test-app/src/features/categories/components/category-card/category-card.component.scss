@@ -1,6 +1,8 @@
 .category-card {
   margin-bottom: 1rem;
 
+  // Muted description body text (encapsulated — global .card-description not used here
+  // to avoid affecting child components via Angular's host scoping rules)
   .description {
     color: rgba(0, 0, 0, 0.6);
     font-size: 0.875rem;
