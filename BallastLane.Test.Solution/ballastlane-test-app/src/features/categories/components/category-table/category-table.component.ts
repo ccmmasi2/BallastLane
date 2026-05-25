@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-category-table',
+  standalone: false,
   templateUrl: './category-table.component.html',
-  styleUrls: ['./category-table.component.scss']
+  styleUrls: ['./category-table.component.scss'],
 })
-export class CategoryTableComponent implements OnInit {
+export class CategoryTableComponent {
+  @Input() categories: Category[] = [];
+  @Input() isLoading = false;
+  @Output() edit = new EventEmitter<Category>();
+  @Output() delete = new EventEmitter<Category>();
 
-  constructor() { }
+  readonly displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
 
-  ngOnInit(): void {
+  onEdit(category: Category): void {
+    this.edit.emit(category);
   }
 
+  onDelete(category: Category): void {
+    this.delete.emit(category);
+  }
 }
