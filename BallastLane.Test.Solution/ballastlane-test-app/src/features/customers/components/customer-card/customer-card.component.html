@@ -1,1 +1,30 @@
-<p>customer-card works!</p>
+<mat-card class="customer-card">
+  <mat-card-header>
+    <mat-card-title>{{ customer.fullName }}</mat-card-title>
+    <mat-card-subtitle *ngIf="customer.documentNumber">
+      Doc: {{ customer.documentNumber }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="info-row" *ngIf="customer.email">
+      <mat-icon class="info-icon">email</mat-icon>
+      <span>{{ customer.email }}</span>
+    </div>
+    <div class="info-row" *ngIf="customer.phone">
+      <mat-icon class="info-icon">phone</mat-icon>
+      <span>{{ customer.phone }}</span>
+    </div>
+    <div class="info-row" *ngIf="customer.address">
+      <mat-icon class="info-icon">location_on</mat-icon>
+      <span>{{ customer.address }}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button color="primary" matTooltip="Edit" (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" matTooltip="Delete" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
