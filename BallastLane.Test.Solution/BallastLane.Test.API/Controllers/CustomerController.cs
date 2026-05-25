@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BallastLane.Test.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase

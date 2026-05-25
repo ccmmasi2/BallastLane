@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { CustomerFormComponent } from './pages/customer-form/customer-form.component';
+import { CustomerDetailsComponent } from './pages/customer-details/customer-details.component';
 
 const routes: Routes = [
   { path: '', component: CustomerListComponent },
   { path: 'new', component: CustomerFormComponent },
+  { path: ':id', component: CustomerDetailsComponent },
   { path: ':id/edit', component: CustomerFormComponent },
 ];
 

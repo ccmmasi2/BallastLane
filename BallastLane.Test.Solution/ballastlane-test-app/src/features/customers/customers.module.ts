@@ -6,11 +6,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { SharedModule } from '../../shared/shared.module';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { CustomerFormComponent } from './pages/customer-form/customer-form.component';
+import { CustomerDetailsComponent } from './pages/customer-details/customer-details.component';
 import { CustomerTableComponent } from './components/customer-table/customer-table.component';
 import { CustomerCardComponent } from './components/customer-card/customer-card.component';
 
@@ -18,6 +20,7 @@ import { CustomerCardComponent } from './components/customer-card/customer-card.
   declarations: [
     CustomerListComponent,
     CustomerFormComponent,
+    CustomerDetailsComponent,
     CustomerTableComponent,
     CustomerCardComponent,
   ],
@@ -31,6 +34,7 @@ import { CustomerCardComponent } from './components/customer-card/customer-card.
     MatInputModule,
     MatIconModule,
     MatSnackBarModule,
+    MatDividerModule,
   ],
 })
 export class CustomersModule {}
