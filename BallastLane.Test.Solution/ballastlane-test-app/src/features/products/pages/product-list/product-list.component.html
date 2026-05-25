@@ -1,1 +1,25 @@
-<p>product-list works!</p>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Products</h1>
+    <button mat-flat-button color="primary" (click)="onCreate()">
+      <mat-icon>add</mat-icon>
+      New Product
+    </button>
+  </div>
+
+  <mat-card *ngIf="errorMessage" class="error-card">
+    <mat-card-content>
+      <p class="error-text">{{ errorMessage }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="loadProducts()">Retry</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <app-product-table
+    [products]="products"
+    [isLoading]="isLoading"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)">
+  </app-product-table>
+</div>

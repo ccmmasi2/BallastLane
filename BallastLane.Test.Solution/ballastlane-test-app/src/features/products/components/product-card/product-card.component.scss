@@ -1,0 +1,25 @@
+.product-card {
+  margin-bottom: 1rem;
+
+  mat-card-subtitle {
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .description {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.875rem;
+    min-height: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .price {
+    font-size: 1rem;
+    margin: 0;
+
+    .price-label {
+      color: rgba(0, 0, 0, 0.54);
+      margin-right: 0.25rem;
+    }
+  }
+}

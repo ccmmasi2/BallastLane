@@ -8,7 +8,7 @@ using System.Security.Claims;
 
 namespace BallastLane.Test.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InvoiceController : ControllerBase

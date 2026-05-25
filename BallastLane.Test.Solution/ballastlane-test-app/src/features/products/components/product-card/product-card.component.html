@@ -1,1 +1,21 @@
-<p>product-card works!</p>
+<mat-card class="product-card">
+  <mat-card-header>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.categoryName }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="description">{{ product.description ?? '—' }}</p>
+    <p class="price">
+      <span class="price-label">Price:</span>
+      {{ product.price | currency:'USD':'symbol':'1.2-2' }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button color="primary" matTooltip="Edit" (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" matTooltip="Delete" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

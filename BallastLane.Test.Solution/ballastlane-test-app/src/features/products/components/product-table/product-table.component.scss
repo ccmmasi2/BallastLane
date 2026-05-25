@@ -1,0 +1,20 @@
+.table-container {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+  }
+
+  .description-cell {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .no-data {
+    padding: 1.5rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+  }
+}
