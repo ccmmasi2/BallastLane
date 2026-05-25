@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Invoice } from '../../models/invoice.model';
 
 @Component({
   selector: 'app-invoice-summary',
+  standalone: false,
   templateUrl: './invoice-summary.component.html',
-  styleUrls: ['./invoice-summary.component.scss']
+  styleUrls: ['./invoice-summary.component.scss'],
 })
-export class InvoiceSummaryComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class InvoiceSummaryComponent {
+  @Input() invoice!: Invoice;
 }

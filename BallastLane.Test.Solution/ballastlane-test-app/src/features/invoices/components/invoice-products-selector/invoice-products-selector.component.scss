@@ -1,0 +1,19 @@
+.selector-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0 0.5rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
+
+  .selector-field {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .product-price {
+    float: right;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.875rem;
+  }
+}

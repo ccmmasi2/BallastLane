@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Invoice } from '../../models/invoice.model';
 
 @Component({
   selector: 'app-invoice-table',
+  standalone: false,
   templateUrl: './invoice-table.component.html',
-  styleUrls: ['./invoice-table.component.scss']
+  styleUrls: ['./invoice-table.component.scss'],
 })
-export class InvoiceTableComponent implements OnInit {
+export class InvoiceTableComponent {
+  @Input() invoices: Invoice[] = [];
+  @Input() isLoading = false;
+  @Output() view = new EventEmitter<Invoice>();
+  @Output() delete = new EventEmitter<Invoice>();
 
-  constructor() { }
+  readonly displayedColumns: string[] = [
+    'id',
+    'invoiceDate',
+    'customer',
+    'detailsCount',
+    'total',
+    'actions',
+  ];
 
-  ngOnInit(): void {
+  onView(invoice: Invoice): void {
+    this.view.emit(invoice);
   }
 
+  onDelete(invoice: Invoice): void {
+    this.delete.emit(invoice);
+  }
 }

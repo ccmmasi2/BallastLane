@@ -1,1 +1,25 @@
-<p>invoice-list works!</p>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Invoices</h1>
+    <button mat-flat-button color="primary" (click)="onCreate()">
+      <mat-icon>add</mat-icon>
+      New Invoice
+    </button>
+  </div>
+
+  <mat-card *ngIf="errorMessage" class="error-card">
+    <mat-card-content>
+      <p class="error-text">{{ errorMessage }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="loadInvoices()">Retry</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <app-invoice-table
+    [invoices]="invoices"
+    [isLoading]="isLoading"
+    (view)="onView($event)"
+    (delete)="onDelete($event)">
+  </app-invoice-table>
+</div>

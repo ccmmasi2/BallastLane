@@ -1,1 +1,39 @@
-<p>invoice-summary works!</p>
+<div class="summary-grid">
+  <div class="summary-section">
+    <h3 class="section-title">Customer</h3>
+    <p class="field-value name">{{ invoice.customerFullName }}</p>
+    <p class="field-value secondary" *ngIf="invoice.customerDocumentNumber">
+      Doc: {{ invoice.customerDocumentNumber }}
+    </p>
+    <p class="field-value secondary" *ngIf="invoice.customerEmail">
+      {{ invoice.customerEmail }}
+    </p>
+    <p class="field-value secondary" *ngIf="invoice.customerPhone">
+      {{ invoice.customerPhone }}
+    </p>
+    <p class="field-value secondary" *ngIf="invoice.customerAddress">
+      {{ invoice.customerAddress }}
+    </p>
+  </div>
+
+  <div class="summary-section">
+    <h3 class="section-title">Invoice</h3>
+    <div class="info-row">
+      <span class="info-label">Invoice #</span>
+      <span class="info-value">{{ invoice.id }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Date</span>
+      <span class="info-value">{{ invoice.invoiceDate | date:'mediumDate' }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Items</span>
+      <span class="info-value">{{ invoice.details.length }}</span>
+    </div>
+  </div>
+
+  <div class="summary-section total-section">
+    <h3 class="section-title">Total</h3>
+    <p class="total-amount">{{ invoice.total | currency:'USD':'symbol':'1.2-2' }}</p>
+  </div>
+</div>

@@ -1,1 +1,88 @@
-<p>invoice-form works!</p>
+<div class="page-container">
+  <div class="page-header">
+    <h1>New Invoice</h1>
+  </div>
+
+  <app-loading-spinner [isLoading]="isLoading" message="Loading data..."></app-loading-spinner>
+
+  <mat-card *ngIf="errorMessage" class="error-card">
+    <mat-card-content>
+      <p class="error-text">{{ errorMessage }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate *ngIf="!isLoading">
+
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>Invoice Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="section-content">
+        <mat-form-field appearance="outline" class="field-customer">
+          <mat-label>Customer</mat-label>
+          <mat-select formControlName="customerId">
+            <mat-option *ngFor="let c of customers" [value]="c.id">
+              {{ c.fullName }}
+              <span class="option-hint" *ngIf="c.documentNumber"> · {{ c.documentNumber }}</span>
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('customerId')?.hasError('required')">Customer is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="field-date">
+          <mat-label>Invoice Date</mat-label>
+          <input matInput type="date" formControlName="invoiceDate" />
+          <mat-error *ngIf="form.get('invoiceDate')?.hasError('required')">Date is required.</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>Products</mat-card-title>
+        <mat-card-subtitle>{{ details.length }} item(s) added</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="empty-details" *ngIf="details.length === 0">
+          <mat-icon>shopping_cart</mat-icon>
+          <p>No products added yet. Use the selector below to add products.</p>
+        </div>
+
+        <app-invoice-detail-row
+          *ngFor="let detail of details.controls; let i = index"
+          [detailGroup]="asFormGroup(detail)"
+          [products]="products"
+          [index]="i"
+          (remove)="removeDetail($event)">
+        </app-invoice-detail-row>
+
+        <p *ngIf="detailsErrorMessage" class="details-error">
+          <mat-icon class="error-icon">warning</mat-icon>
+          {{ detailsErrorMessage }}
+        </p>
+
+        <app-invoice-products-selector
+          [products]="products"
+          (addProduct)="addDetail($event)">
+        </app-invoice-products-selector>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="total-card" *ngIf="details.length > 0">
+      <mat-card-content>
+        <div class="total-row">
+          <span class="total-label">Grand Total</span>
+          <span class="total-value">{{ getTotal() | currency:'USD':'symbol':'1.2-2' }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="onCancel()">Cancel</button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="isSaving">
+        {{ isSaving ? 'Saving...' : 'Create Invoice' }}
+      </button>
+    </div>
+
+  </form>
+</div>

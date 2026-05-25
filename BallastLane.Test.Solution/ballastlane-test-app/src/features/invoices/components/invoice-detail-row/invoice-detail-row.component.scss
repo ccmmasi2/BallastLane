@@ -1,0 +1,43 @@
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .field-product {
+    flex: 2;
+    min-width: 180px;
+  }
+
+  .field-qty {
+    flex: 0 0 90px;
+  }
+
+  .field-price {
+    flex: 0 0 130px;
+  }
+
+  .field-subtotal {
+    flex: 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .subtotal-label {
+      font-size: 0.7rem;
+      color: rgba(0, 0, 0, 0.54);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .subtotal-value {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}

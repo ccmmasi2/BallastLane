@@ -1,1 +1,39 @@
-<p>invoice-detail-row works!</p>
+<div class="detail-row" [formGroup]="detailGroup">
+
+  <mat-form-field appearance="outline" class="field-product">
+    <mat-label>Product</mat-label>
+    <mat-select formControlName="productId" (selectionChange)="onProductChange($event.value)">
+      <mat-option *ngFor="let p of products" [value]="p.id">{{ p.name }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="detailGroup.get('productId')?.hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field-qty">
+    <mat-label>Qty</mat-label>
+    <input matInput type="number" formControlName="quantity" min="1" />
+    <mat-error *ngIf="detailGroup.get('quantity')?.hasError('min')">Min 1</mat-error>
+    <mat-error *ngIf="detailGroup.get('quantity')?.hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field-price">
+    <mat-label>Unit Price</mat-label>
+    <span matTextPrefix>$&nbsp;</span>
+    <input matInput type="number" formControlName="unitPrice" min="0.01" step="0.01" />
+    <mat-error *ngIf="detailGroup.get('unitPrice')?.hasError('min')">Min $0.01</mat-error>
+    <mat-error *ngIf="detailGroup.get('unitPrice')?.hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <div class="field-subtotal">
+    <span class="subtotal-label">Subtotal</span>
+    <span class="subtotal-value">{{ subtotal | currency:'USD':'symbol':'1.2-2' }}</span>
+  </div>
+
+  <button
+    mat-icon-button
+    color="warn"
+    type="button"
+    matTooltip="Remove product"
+    (click)="onRemove()">
+    <mat-icon>remove_circle_outline</mat-icon>
+  </button>
+</div>
