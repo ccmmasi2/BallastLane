@@ -1,12 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDividerModule } from '@angular/material/divider';
 
 import { SharedModule } from '../../shared/shared.module';
 import { CustomersRoutingModule } from './customers-routing.module';
@@ -24,17 +17,6 @@ import { CustomerCardComponent } from './components/customer-card/customer-card.
     CustomerTableComponent,
     CustomerCardComponent,
   ],
-  imports: [
-    SharedModule,
-    ReactiveFormsModule,
-    CustomersRoutingModule,
-    MatTableModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatDividerModule,
-  ],
+  imports: [SharedModule, ReactiveFormsModule, CustomersRoutingModule],
 })
 export class CustomersModule {}

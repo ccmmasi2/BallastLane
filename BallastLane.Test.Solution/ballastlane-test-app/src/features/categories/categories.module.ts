@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDividerModule } from '@angular/material/divider';
 
 import { SharedModule } from '../../shared/shared.module';
 import { CategoriesRoutingModule } from './categories-routing.module';
@@ -23,16 +17,6 @@ import { CategoryCardComponent } from './components/category-card/category-card.
     CategoryTableComponent,
     CategoryCardComponent,
   ],
-  imports: [
-    SharedModule,
-    ReactiveFormsModule,
-    CategoriesRoutingModule,
-    MatTableModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatDividerModule,
-  ],
+  imports: [SharedModule, ReactiveFormsModule, CategoriesRoutingModule],
 })
 export class CategoriesModule {}
