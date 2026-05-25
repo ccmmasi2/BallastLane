@@ -1,0 +1,48 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 52D2-F1D7
+D:\REPOSITORY\ESTUDIO\BALLASTLANE\BALLASTLANE.TEST.SOLUTION\BALLASTLANE-TEST-APP
+|   .editorconfig
+|   .gitignore
+|   angular.json
+|   browserslist
+|   estructura-front.txt
+|   karma.conf.js
+|   package-lock.json
+|   package.json
+|   README.md
+|   tsconfig.app.json
+|   tsconfig.json
+|   tsconfig.spec.json
+|   tslint.json
+|   
++---e2e
+|   |   protractor.conf.js
+|   |   tsconfig.json
+|   |   
+|   \---src
+|           app.e2e-spec.ts
+|           app.po.ts
+|           
+\---src
+    |   favicon.ico
+    |   index.html
+    |   main.ts
+    |   polyfills.ts
+    |   styles.scss
+    |   test.ts
+    |   
+    +---app
+    |       app-routing.module.ts
+    |       app.component.html
+    |       app.component.scss
+    |       app.component.spec.ts
+    |       app.component.ts
+    |       app.module.ts
+    |       
+    +---assets
+    |       .gitkeep
+    |       
+    \---environments
+            environment.prod.ts
+            environment.ts
+            
