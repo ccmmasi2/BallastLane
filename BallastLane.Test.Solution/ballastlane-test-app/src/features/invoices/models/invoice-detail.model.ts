@@ -1,7 +1,9 @@
 export interface InvoiceDetail {
   id: number;
   productId: number;
-  quantity: number;
+  productName: string;
+  categoryName: string | null;
   unitPrice: number;
+  quantity: number;
   subtotal: number;
 }
